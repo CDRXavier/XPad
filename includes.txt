@@ -1,0 +1,309 @@
+file include tree
+MK2.1_sketch
+	XpandShield2.h
+		SPI.h
+	joystick.h
+		dynamicHID.h
+			stdint.h
+			arduino.h
+All of the following by default is somewhere around here
+C:\Program Files (x86)\Arduino\hardware\
+Arduino.h
+	stdlib.h
+	stdbool.h
+	string.h
+	math.h
+	avr/pgmspace.h
+		avr.io
+	avr/interrupt.h
+	binary.h
+	pins_arduino.h
+
+	wcharacter.h
+	wstring.h
+	hardwareserial.h
+	USBAPI.h
+	
+USBAPI.h (uses stuff from usbcore)
+	inttypes
+	pgmspace
+	eeprom
+	interrupt
+	util/delay
+
+	usbdesc.h (useless lel)
+	usbcore.h (important base)
+
+#include <inttypes.h>
+	stdint.h
+#include <stddef.h>
+	avr/io.h
+		include <avr/sfr_defs.h>
+		#include <avr/portpins.h>
+		#include <avr/common.h>
+		#include <avr/version.h>
+	avr/interrupt.h
+	binary.h
+	"WCharacter.h"
+	"WString.h"
+	"HardwareSerial.h"
+	"USBAPI.h"
+	pins_arduino.h
+USBAPI.h is in C:\Program Files (x86)\Arduino\hardware\arduino\
+USBCore.h
+	USBAPI.h
+		USBDesc.h
+		USBCore.h <-- !!!important!!! <--
+#include <inttypes.h>
+#include <avr/pgmspace.h>
+#include <avr/eeprom.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+
+
+Arduino "core" loop
+
+int main(void)
+{
+	init();
+	initVariant();
+
+#if defined(USBCON)
+	USBDevice.attach();
+#endif
+	
+	setup();
+	for (;;) {
+		loop();
+		if (serialEventRun) serialEventRun();
+	}
+	return 0;
+}
+
+BOOTLOADERS\CATERINA
+
+caterina.c: Caterina.h
+
+Caterina.h:
+#include <avr/io.h>
+#include <avr/wdt.h>
+#include <avr/boot.h>
+#include <avr/eeprom.h>
+#include <avr/power.h>
+#include <avr/interrupt.h>
+#include <stdbool.h>
+
+#include "Descriptors.h"
+
+#include <LUFA/Drivers/USB/USB.h>
+
+Descriptors.c:
+Descriptors.h
+
+
+
+CORES:
+WInterrupts.c
+#include <inttypes.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <avr/pgmspace.h>
+#include <stdio.h>
+
+#include "wiring_private.h"
+
+
+wiring.c:
+wiring_priavate.h
+
+‏wiring_analog.c
+#include "wiring_private.h"
+#include "pins_arduino.h"
+
+
+wiring_digital.c
+#include "wiring_private.h"
+#include "pins_arduino.h"
+
+wiring_pulse.c
+#include "wiring_private.h"
+#include "pins_arduino.h"
+
+wiring_shift.c
+#include "wiring_private.h"
+
+
+abi.cpp:
+stdlib.h
+
+cdc.cpp:
+USBAPI.h
+
+hardwareserial.h
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <inttypes.h>
+#include <util/atomic.h>
+#include "Arduino.h"
+
+#include "HardwareSerial.h"
+#include "HardwareSerial_private.h"
+
+hardwareserial0-3.cpp
+#include "Arduino.h"
+#include "HardwareSerial.h"
+#include "HardwareSerial_private.h"
+
+IPAddress.cpp
+#include <Arduino.h>
+#include <IPAddress.h>
+
+main.cpp
+arduino.h
+
+new.cpp
+new.h
+
+pluggableusb.h
+USBAPI.h
+pluggableUSB.h
+
+print.h
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include "Arduino.h"
+
+#include "Print.h"
+
+stream.cpp
+#include "Arduino.h"
+#include "Stream.h"
+
+tone.cpp
+#include <avr/interrupt.h>
+#include <avr/pgmspace.h>
+#include "Arduino.h"
+#include "pins_arduino.h"
+
+USBCore.cpp
+#include "USBAPI.h"
+#include "PluggableUSB.h"
+#include <stdlib.h>
+
+WMath.cpp
+"stdlib.h"
+
+WString.cpp
+WString.h
+
+new
+stdlib.h
+
+arduino.h
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <math.h>
+
+#include <avr/pgmspace.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+#include "binary.h"
+
+binary.h
+none
+
+client.h
+#include "Print.h"
+#include "Stream.h"
+#include "IPAddress.h"
+
+hardwaresrial.h
+#include <inttypes.h>
+#include "Stream.h"
+
+hardwareserial_private.h
+#include "wiring_private.h"
+
+ipaddress.h
+#include <stdint.h>
+#include "Printable.h"
+#include "WString.h"
+
+new.h
+new
+
+pluggableusb.h
+#include "USBAPI.h"
+#include <stdint.h>
+
+print.h
+#include <inttypes.h>
+#include <stdio.h> // for size_t
+#include "WString.h"
+#include "Printable.h"
+
+printable.h
+stdlib.h
+
+server.h
+print.h
+
+stream.h
+#include <inttypes.h>
+#include "Print.h"
+
+udp.h
+stream.h
+ipaddress.h
+
+usbapi.h
+#include <inttypes.h>
+#include <avr/pgmspace.h>
+#include <avr/eeprom.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+#include "Arduino.h"
+
+usbcore.h
+usbapi.h
+
+usbdesc.h
+none
+
+wcharacter.h
+ctype.h
+
+wiring_private.h
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include "Arduino.h"
+
+
+wstring.h
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <avr/pgmspace.h>
+
+dynamichid.cpp
+dynamichid.h
+
+joystick.cpp
+joystick.h
+
+gamepadpins.ino
+XInput.h
+
+Xinput.h
+arduino.h
+
+
+things to look at:
+https://forum.arduino.cc/t/programming-without-bootloader/127250/26
